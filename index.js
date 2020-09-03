@@ -102,29 +102,30 @@ Final Score: awayTeam - homeTeam */
 function scoreboard(inning, numberOfInnings) {
   let Home = 0;
   let Away = 0;
+
   let inningScores = {};
   for (let i = 1; i <= numberOfInnings; i++) {
-    //Home = Home + inning();
-    //Away = Away + inning();
+    Home = Home + inning();
+    Away = Away + inning();
     let propertyName = "";
+
     if (i === 1) {
       propertyName = "1st Inning";
-    }
-    if (i === 2) {
+    } else if (i === 2) {
       propertyName = "2nd Inning";
-    }
-    if (i === 3) {
+    } else if (i === 3) {
       propertyName = "3rd Inning";
-    }
-    if (i >= 4) {
+    } else if (i >= 4) {
       propertyName = `${i}th Inning`;
     }
-    let scores = "";
-    let currentHomeScore = inning();
+
+    let scores = `awayTeam${Away} - homeTeam ${Home}`;
 
     inningScores[propertyName] = scores;
   }
+  let getfinalScore = `awayTeam${Away} - homeTeam${Home}`;
 
-  return {};
+  inningScores.finalScore = getfinalScore;
+  return inningScores;
 }
-console.group(scoreboard(inning, 9));
+console.log(scoreboard(inning, 9));
