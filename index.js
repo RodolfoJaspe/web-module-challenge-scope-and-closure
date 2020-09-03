@@ -26,9 +26,10 @@ console.log(processFirstItem(["foo", "bar"], (str) => str + str));
  * Study the code for counter1 and counter2. Answer the questions below.
  *
  * 1. What is the difference between counter1 and counter2?
- *
+ *  In counter1 the variabe is inside the function scope, therefore private to the function.
+ *  In counter2 the variable is in global scope, it can be modified.
  * 2. Which of the two uses a closure? How can you tell?
- *
+ *  Counter1 uses a closure.
  * 3. In what scenario would the counter1 code be preferable? In what scenario would counter2 be better?
  *
  */
@@ -97,7 +98,33 @@ and returns the score at each pont in the game, like so:
 8th inning: awayTeam - homeTeam
 9th inning: awayTeam - homeTeam
 Final Score: awayTeam - homeTeam */
+// FinalScore: `awayTeam  ${Away}-homeTeam ${Home}`
+function scoreboard(inning, numberOfInnings) {
+  let Home = 0;
+  let Away = 0;
+  let inningScores = {};
+  for (let i = 1; i <= numberOfInnings; i++) {
+    //Home = Home + inning();
+    //Away = Away + inning();
+    let propertyName = "";
+    if (i === 1) {
+      propertyName = "1st Inning";
+    }
+    if (i === 2) {
+      propertyName = "2nd Inning";
+    }
+    if (i === 3) {
+      propertyName = "3rd Inning";
+    }
+    if (i >= 4) {
+      propertyName = `${i}th Inning`;
+    }
+    let scores = "";
+    let currentHomeScore = inning();
 
-function scoreboard(/* CODE HERE */) {
-  /* CODE HERE */
+    inningScores[propertyName] = scores;
+  }
+
+  return {};
 }
+console.group(scoreboard(inning, 9));
